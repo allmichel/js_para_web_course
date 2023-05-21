@@ -1,6 +1,8 @@
-function tocaSomPom(){
-    document.querySelector('#som_tecla_pom').play();
+//let idElementoAudio = 
+function tocaSom(idElementoAudio){
+    document.querySelector(idElementoAudio).play();
 }
+
 function tocaSomClap(){
     document.querySelector('#som_tecla_clap').play();
             
@@ -20,7 +22,19 @@ const ListaDeTeclas =  document.querySelectorAll('.tecla');
 let i = 0;
 
 while (i<ListaDeTeclas.length) {
-    ListaDeTeclas[i].onclick = tocaSomClap;
+    
+    const tecla = ListaDeTeclas[i];
+    
+    const instrumento = tecla.classList[1];
+    //template string
+    //obs: procurar por exercicios com template string
+    const idAudio = `#som_${instrumento}`;
+
+    console.log(idAudio);
+    //                       Função anônima
+    ListaDeTeclas[i].onclick = function(){
+        tocaSom(idAudio);
+    };
 
     i += 1;
     console.log(i);
